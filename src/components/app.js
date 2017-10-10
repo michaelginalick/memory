@@ -1,7 +1,9 @@
 ((() => {
   const html = `
     <div class="app">
-      <div class="grid"> </div>
+      <div class="wrapper">
+        <div v-for="(tile, index) in tiles" v-bind:key="tile.id" @click="handleClick(tile)"class="box">{{tile.id}}</div>
+      </div>
     </div>
   `
 
@@ -10,59 +12,33 @@
 
     data() {
       return {
-
+        tiles: [],
       }
     },
 
     mounted() {
       const self = this
 
-      self.grid(4,6)
+      self.populateBoard()
     },
 
     methods: {
 
-      grid(rows,cols,target){
+      populateBoard() {
         const self = this
 
-        cols = cols || rows
-        target = target || "grid"
-        var gridDiv = $("." + target)
+        for(let i = 0; i <= 23; i++) {
+          self.tiles.push({id: i, showFace: false})
+        }
 
-        _.times(rows, function() {
-          gridDiv
-          .each(function(){ // allows multiple grids
-            $(this).append(self.addRows(rows,cols));
-            })
-        })
+        return self.tiles
       },
 
-      addRows(rows,cols){
+      handleClick(event) {
         const self = this
 
-        return $("<div />")
-                .addClass("row")
-                .html( self.addCols(cols))
-      },
-
-      addCols(cols){
-        const self = this
-
-        return _.times(cols, function() {
-          return $("<div />")
-            .addClass("col")
-            .html( self.getElement() )
-         })
-      },
-
-      getElement(){
-        var elements = [
-            "A",
-            "B",
-            "C"
-        ];
-        return _.sample(elements);
-      },
+        debugger
+      }
     }
 
   })
