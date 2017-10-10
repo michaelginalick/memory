@@ -1,7 +1,9 @@
 ((() => {
   const html = `
     <div class="tile">
-      <app :tiles="tiles" :matchingOptions="matchingOptions"></app>
+      <app :tiles="tiles" :matching-options="matchingOptions"
+        @compare-matches="handleEventFromChild">
+      </app>
     </div>
   `
 
@@ -24,7 +26,10 @@
           {name: "C", pairs: 2},
           {name: "Ruby", pairs: 2},
           {name: "Python", pairs: 2},
-        ]
+        ],
+
+        guesses: [],
+        clicks: 0
       }
     },
 
@@ -33,6 +38,14 @@
     },
 
     methods: {
+
+      handleEventFromChild(event) {
+        const self = this
+
+        event.showFace = !event.showFace
+        ++self.clicks
+        self.guesses.push(event)
+      }
 
     }
 

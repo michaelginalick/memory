@@ -65,6 +65,11 @@ body {
   grid-gap: 10px;
 }
 
+.black_active {
+  color: black;
+  background: black;
+}
+
 /*
 Color Palette:
 https://coolors.co/8bd096-91ccc8-f4f1b7-f2ee83-c1bf72
