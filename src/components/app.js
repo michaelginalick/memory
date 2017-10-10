@@ -12,34 +12,20 @@
 
     data() {
       return {
-        tiles: [],
-        matchingOptions: [
-          {name: "Rails"},
-          {name: "Rails"},
-          {name: "PHP"},
-          {name: "PHP"},
-          {name: "Node"},
-          {name: "Node"},
-          {name: "React"},
-          {name: "React"},
-          {name: "GoLang"},
-          {name: "GoLang"},
-          {name: "Lisp"},
-          {name: "Lisp"},
-          {name: "Perl"},
-          {name: "Perl"},
-          {name: "Java"},
-          {name: "Java"},
-          {name: "C++"},
-          {name: "C++"},
-          {name: "C"},
-          {name: "C"},
-          {name: "Ruby"},
-          {name: "Ruby"},
-          {name: "Python"},
-          {name: "Python"},
-        ]
       }
+    },
+
+    props: {
+      tiles: {
+        type: Array,
+        required: true
+      },
+
+      matchingOptions: {
+        type: Array,
+        required: true
+      },
+
     },
 
     mounted() {
@@ -67,19 +53,20 @@
       getRandomElement() {
         const self = this
 
-        let item = self.matchingOptions[Math.floor(Math.random() * self.matchingOptions.length)]
-        self.removeItem(item)
+        let pairs = self.matchingOptions.filter(object => object.pairs >= 1)
+
+        let item = pairs[Math.floor(Math.random() * pairs.length)]
+        self.itemToDecrement(item)
 
         return item
       },
 
-      removeItem(item) {
+      itemToDecrement(item) {
         const self = this
-        let itemToRemove = self.matchingOptions.map(object => object.name === item.name)
 
-        self.matchingOptions.splice(itemToRemove.indexOf(true), 1)
+        let decrementItem = self.matchingOptions.find(object => object.name === item.name)
 
-        return self.matchingOptions
+        return self.matchingOptions[decrementItem.pairs -=1]
       },
 
     }
