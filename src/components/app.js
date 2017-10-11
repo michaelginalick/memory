@@ -3,7 +3,7 @@
     <div class="app">
       <div class="wrapper">
         <div v-for="(tile, index) in tiles" v-bind:key="tile.id"
-          v-bind:class="{black_active: tile.showFace === false}"
+          v-bind:class="{black_active: tile.showFace === false }"
           @click="handleClick(tile)"class="box">{{tile.face.name}}
         </div>
       </div>
@@ -43,7 +43,7 @@
         const self = this
 
         for(let i = 0; i <= ((self.matchingOptions.length*2)-1); i++) {
-          self.tiles.push({id: i, showFace: false, face: self.getRandomElement() })
+          self.tiles.push({id: i, showFace: false, face: self.getRandomElement(), matched: false })
         }
 
         return self.tiles
@@ -71,7 +71,7 @@
 
         let decrementItem = self.matchingOptions.find(object => object.name === item.name)
 
-        return self.matchingOptions[decrementItem.pairs -=1]
+        return self.matchingOptions[decrementItem.pairs-=1]
       },
 
     }
