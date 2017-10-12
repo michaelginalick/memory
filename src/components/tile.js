@@ -3,7 +3,7 @@
     <div class="tile">
       <h1 style="margin-right:25%;">ROUND {{ level }}</h1>
       <h1 style="margin-right:25%;">Matches to go {{ matchesLeft }}</h1>
-      <app :tiles="tiles" :matching-options="matchingOptions"
+      <app :tiles="tiles" :guesses="guesses" :matching-options="matchingOptions"
         @compare-matches="handleEventFromChild">
       </app>
     </div>
@@ -96,7 +96,7 @@
             self.tiles[i].showFace = false
           }
         }
-      }
+      },
 
     }
 
