@@ -1,6 +1,8 @@
 ((() => {
   const html = `
     <div class="tile">
+      <h1 style="margin-right:25%;">ROUND {{ level }}</h1>
+      <h1 style="margin-right:25%;">Matches to go {{ matchesLeft }}</h1>
       <app :tiles="tiles" :matching-options="matchingOptions"
         @compare-matches="handleEventFromChild">
       </app>
@@ -30,7 +32,24 @@
 
         guesses: [],
         clickCount: 0,
-        round: 1
+        round: 1,
+        level: 1,
+      }
+    },
+
+    computed: {
+      matchesLeft() {
+        const self = this
+
+        let left = 0
+        let tilesLength = self.tiles.length
+
+        for(let i = 0; i < tilesLength; i++) {
+          if (self.tiles[i].matched == true) {
+            ++left
+          }
+        }
+        return ((tilesLength-left)/2)
       }
     },
 
@@ -68,6 +87,7 @@
         self.clickCount = 0
         self.round = 1
         self.guesses = []
+        ++self.level
 
         for(let i = 0; i < self.tiles.length; i++) {
           let tile = self.tiles[i]
