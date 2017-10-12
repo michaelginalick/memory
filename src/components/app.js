@@ -28,8 +28,7 @@
       guesses: {
         type: Array,
         required: true
-      }
-
+      },
     },
 
     mounted() {
@@ -79,7 +78,7 @@
 
         if(self.guesses.length === 1 && self.guesses[0].id === event.id ){ return false }
         return true
-      }
+      },
 
     }
 
