@@ -25,6 +25,11 @@
         required: true
       },
 
+      guesses: {
+        type: Array,
+        required: true
+      }
+
     },
 
     mounted() {
@@ -48,7 +53,7 @@
       handleClick(event) {
         const self = this
 
-        if(event.matched === true) {return}
+        if(event.matched === true || !self.verifyNonDuplicateGuess(event)) {return}
         self.$emit("compare-matches", event)
       },
 
@@ -68,6 +73,13 @@
 
         return self.matchingOptions[decrementItem.pairs-=1]
       },
+
+      verifyNonDuplicateGuess(event) {
+        const self = this
+
+        if(self.guesses.length === 1 && self.guesses[0].id === event.id ){ return false }
+        return true
+      }
 
     }
 

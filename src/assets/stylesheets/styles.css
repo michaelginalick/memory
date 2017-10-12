@@ -71,34 +71,3 @@ body {
   margin-left: 10%;
   display: grid;
 }
-
-/*
-Color Palette:
-https://coolors.co/8bd096-91ccc8-f4f1b7-f2ee83-c1bf72
-
-Colors:
-floral-white:
- - #FEFDFB;
- - rgba(254, 253, 251, 1);
-eerie-black:
- - #1E1E12;
- - rgba(58, 41, 12, 1);
-jasper:
- - #CE3D3D;
- - rgba(0, 70, 81, 1);
-dark-sea-green:
- - #8BD096;
- - rgba(130, 33, 82, 1);
-middle-blue-green:
- - #91CCC8;
- - rgba(176, 29, 80, 1);
-blond:
- - #F4F1B7;
- - rgba(57, 25, 96, 1);
-sunny:
- - #F2EE83;
- - rgba(58, 46, 95, 1);
-dark-khaki:
- - #C1BF72;
- - rgba(58, 41, 76, 1);
-*/
